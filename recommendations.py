@@ -26,8 +26,6 @@ def sim_distance(prefs, person1, person2):
 
 	return 1/(1+sqrt(sum_of_squares))
 
-print(sim_distance(cirtics,'WangWenJun','WangBing'))
-
 def sim_person(prefs, person1, person2):
 	si = {}
 	for item in prefs[person1]:
@@ -56,13 +54,15 @@ def sim_person(prefs, person1, person2):
 
 	return num/den
 
-print(sim_person(cirtics, 'WangWenJun','WangBing'))
+
 
 def topMatches(prefs, person, n=5, similarity = sim_person):
 	scores = [(similarity(prefs, person,other),other) for other in prefs if other!=person]
-
 	scores.sort()
 	scores.reverse()
 	return scores[0:n]
 
-print(topMatches(cirtics,'WangWenJun'))
+if __name__ == '__main__':
+	print(sim_distance(cirtics,'WangWenJun','WangBing'))
+	print(sim_person(cirtics, 'WangWenJun','WangBing'))
+	print(topMatches(cirtics,'WangWenJun'))
