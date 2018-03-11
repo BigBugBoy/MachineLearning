@@ -67,6 +67,7 @@ def classify0(inX, dataSet, labels, k):
 	return sortedClassCount[0][0]
 
 
+
 if __name__ == '__main__':
 	group,labels= createDataSet()
 	# 测试数据
