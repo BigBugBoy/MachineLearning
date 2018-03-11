@@ -1,15 +1,50 @@
+# -*- coding: UTF-8 -*-
+# 电影类别
+"""
+问题说明：
+	根据爱情片和动作片的镜头数（训练集），得到目标数据（测试集）分类
+数据描述：
+	特征名： 
+		1.爱情类镜头数
+		2.动作类镜头数
+	标签名：
+		1.爱情片
+		2.动作片
+"""
+
 import numpy as np
 import operator
 
+'''
+Function:
+	创建数据集和数据标签
+
+Parameters：
+	NULL
+Return：
+	group: 矩阵化测试集
+	labels: 标签列表
+'''
 def createDataSet():
-	# [打斗镜头数，接吻镜头数]
 	group = np.array([[3,104],[2,100],[1,81],[101,10],[99,5],[98,2]])
 	labels = ['爱情片1','爱情片2','爱情片3','动作片1','动作片2','动作片3']
 	return group,labels
 
+
+'''
+Function:
+	基于knn算法的分类器
+Parameters:
+	inX: 用于分类的数据（测试集）
+	dataSet: 训练集
+	labels: 分类的标签列表
+	k: 选择knn算法中，距离最小的k个点
+Return: 
+	sortedClassCount[0][0]: 分类标签
+'''
 def classify0(inX, dataSet, labels, k):
 	dataSetSize = dataSet.shape[0]
-	# tile(A,(B,C)) 在列方向将A重复C次，行方向重复B次
+	# tile(A,(B,C))  用inX构成一个B*C的矩阵
 	diffMat = np.tile(inX,(dataSetSize,1)) - dataSet
 	sqDiffMat = diffMat**2
 	# sum()所有元素相加，saxis=0列相加，axis=1行相加
@@ -31,9 +66,10 @@ def classify0(inX, dataSet, labels, k):
 	sortedClassCount = sorted(classCount.items(),key = operator.itemgetter(1),reverse = True)
 	return sortedClassCount[0][0]
 
-# 测试部分
+
 if __name__ == '__main__':
 	group,labels= createDataSet()
+	# 测试数据
 	test = [18,90]
 	result = classify0(test,group, labels,3)
 	print(result)
