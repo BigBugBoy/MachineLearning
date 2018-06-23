@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
+
 # 电影类别
+
 """
 问题说明：
 	根据爱情片和动作片的镜头数（训练集），得到目标数据（测试集）分类
@@ -12,13 +14,14 @@
 		2.动作片
 """
 
+
 import numpy as np
 import operator
+
 
 '''
 Function:
 	创建数据集和数据标签
-
 Parameters：
 	NULL
 Return：
@@ -72,5 +75,5 @@ if __name__ == '__main__':
 	group,labels= createDataSet()
 	# 测试数据
 	test = [18,90]
-	result = classify0(test,group, labels,3)
+	result = classify0(test, group, labels, 3)
 	print(result)

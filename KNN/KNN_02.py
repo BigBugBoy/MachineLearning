@@ -88,7 +88,7 @@ def autoNorm(dataSet):
 '''
 Function:
 	分类器针对约会匹配的测试函数
-	目前错误率为5%
+	hoRatio = 0.1并且 k = 3的条件下：匹配错误率为5%
 Parameters：
 	NULL
 Return：
